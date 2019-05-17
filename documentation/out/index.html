@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Plataforma de Espacialização de Dados da Educação do Estado de Goiás Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Plataforma de Espacialização de Dados da Educação do Estado de Goiás</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu inline">
+					<li><a href="module-client_lib_financiamento.html">client/lib/financiamento</a></li><li><a href="module-client_lib_ideb.html">client/lib/ideb</a></li><li><a href="module-client_lib_matriculas.html">client/lib/matriculas</a></li><li><a href="module-client_lib_pdf_geraDocumentoPdfFinanciamento.html">client/lib/pdf/geraDocumentoPdfFinanciamento</a></li><li><a href="module-client_lib_pdf_geraDocumentoPdfIdeb.html">client/lib/pdf/geraDocumentoPdfIdeb</a></li><li><a href="module-client_lib_pdf_geraDocumentoPdfMatriculas.html">client/lib/pdf/geraDocumentoPdfMatriculas</a></li><li><a href="module-client_lib_pdf_geraDocumentoPdfTransporte.html">client/lib/pdf/geraDocumentoPdfTransporte</a></li><li><a href="module-client_lib_transporte.html">client/lib/transporte</a></li><li><a href="module-client_lib_util.html">client/lib/util</a></li><li><a href="module-server_main.html">server/main</a></li><li><a href="module-server_middleware_parsedb.html">server/middleware/parsedb</a></li><li><a href="module-server_middleware_parseFinanciamento.html">server/middleware/parseFinanciamento</a></li><li><a href="module-server_middleware_parseIdeb.html">server/middleware/parseIdeb</a></li><li><a href="module-server_middleware_parseTransporte.html">server/middleware/parseTransporte</a></li><li><a href="module-server_middleware_repository.html">server/middleware/repository</a></li><li><a href="module-server_routers_geojson.html">server/routers/geojson</a></li><li><a href="module-server_utils_insereDadosFinanciamento.html">server/utils/insereDadosFinanciamento</a></li><li><a href="module-server_utils_insereDadosIdeb.html">server/utils/insereDadosIdeb</a></li><li><a href="module-server_utils_insereDadosMatriculas.html">server/utils/insereDadosMatriculas</a></li><li><a href="module-server_utils_insereDadosTranporte.html">server/utils/insereDadosTranporte</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><h2>Plataforma de Espacialização dos Dados da Educação do Estado de Goiás</h2><p>Esta plataforma tem o objetivo de espacializar via WebGIS (Sistemas de Informações Geográficas em ambiente web), os dados: do financiamento da educação, do Índice de Desenvolvimento da Educação Básica (IDEB), das matrículas da educação infantil e do transporte escolar em mapas georreferenciados. </p>
+<h3>Pré-requisitos</h3><ul>
+<li>[MySql]    - Executar script localizado em database/querys/banco_geral.sql</li>
+<li>[Node.js]  - Sugestão de Instalação descrita no próximo item. </li>
+</ul>
+<h4>Instalação do Node.js via arquivo binário no linux</h4><p>Crie o diretório do nodejs</p>
+<pre class="prettyprint source"><code># mkdir -p /usr/local/lib/nodejs</code></pre><p>Descompacte o arquivo binário da última versão LTS disponível no diretório do nodejs criado anteriormente. /usr/local/lib/nodejs</p>
+<pre class="prettyprint source"><code># tar -xJvf node-v10.15.1-linux-x64.tar.xz -C /usr/local/lib/nodejs </code></pre><p>Adicione as variáveis de ambiente no arquivo ~/.bashrc</p>
+<pre class="prettyprint source"><code># nano ~/.bashrc</code></pre><p>Copie as linhas abaixo para o final do arquivo ~/.bashrc</p>
+<pre class="prettyprint source"><code>export VERSION=v10.15.1 
+export DISTRO=linux-x64
+export PATH=/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin:$PATH
+
+alias node='/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin/node'
+alias npm='/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin/npm'
+alias npx='/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin/npx'</code></pre><p>Recarrege o arquivo  </p>
+<pre class="prettyprint source"><code># source ~/.bashrc</code></pre><p>Teste a instalação verificando as versões, conforme comandos abaixo</p>
+<pre class="prettyprint source"><code># node -v
+
+# npm version
+
+# npx -v</code></pre><p>A saída normal seria:</p>
+<pre class="prettyprint source"><code># node -v
+v8.11.4</code></pre><pre class="prettyprint source"><code># npm version
+
+
+{ npm: '5.6.0',
+ ares: '1.10.1-DEV',
+ cldr: '31.0.1',
+ http_parser: '2.7.0',
+ icu: '59.1',
+ modules: '57',
+ nghttp2: '1.25.0',
+ node: '8.11.4',
+ openssl: '1.0.2n',
+ tz: '2017b',
+ unicode: '9.0',
+ uv: '1.15.0',
+ v8: '6.1.534.50',
+ zlib: '1.2.11' }
+</code></pre><h3>Deployment</h3><ol>
+<li>Para iniciar o servidor você precisa acessar o diretório server/ e executar o comando abaixo no terminal</li>
+</ol>
+<p>Ambiente de produção:</p>
+<pre class="prettyprint source"><code># nohup node main.js &</code></pre><p>Ambiente de desenvolvimento:</p>
+<pre class="prettyprint source"><code># node main.js</code></pre><p>OBS: A execução do node com o comando (nohup e &amp; no final) faz com que a aplicação fique executando em background. </p>
+<ol start="2">
+<li>Para acessar a aplicação digite o endereço abaixo no navegador: </li>
+</ol>
+<pre class="prettyprint source"><code>http://localhost</code></pre><h3>Dependências</h3><ul>
+<li><a href="https://nodejs.org/en/">Node.js</a> - Servidor web </li>
+<li><a href="https://leafletjs.com/">Leaflet</a> - Biblioteca JavaScript de mapas interativos </li>
+<li><a href="https://parall.ax/products/jspdf">jsPDF</a> - Biblioteca JavaScript para criação de arquivos PDF</li>
+<li><a href="https://plot.ly/javascript/">Plotly</a> - Biblioteca JavaScript para criação de gráficos</li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright © 2019 Tharles de Sousa Andrade
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	
+		on May 17th 2019
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+<script>
+	$( function () {
+		$( '#main' ).localScroll( {
+			offset : { top : 60 } //offset by the height of your header (give or take a few px, see what works for you)
+		} );
+		$( "dt.name" ).each( function () {
+			var $this = $( this ).find("h4");
+			var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+			var dt = $(this);
+			var children = dt.next( "dd" );
+
+			dt.prepend( icon ).css( {cursor : "pointer"} );
+			dt.addClass( "member-collapsed" ).addClass( "member" );
+
+
+			children.hide();
+
+			dt.children().on( "click", function () {
+				children = dt.next( "dd" );
+				children.slideToggle( "fast", function () {
+
+					if ( children.is( ":visible" ) ) {
+						icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+						dt.addClass( "member-open" ).animate( "member-collapsed" );
+					} else {
+						icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+						dt.addClass( "member-collapsed" ).removeClass( "member-open" );
+					}
+				} );
+			} );
+
+		} );
+	} );
+</script>
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

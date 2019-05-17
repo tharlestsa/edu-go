@@ -1,0 +1,57 @@
+.text {
+    border:1px solid red;
+    display: table-cell;
+    white-space: nowrap;
+}.distance-div {
+	margin: 15px 0px 15px 0px;
+}
+
+.ui-autocomplete {
+    height: 100px;
+    width: 200px;
+    overflow-y: scroll;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: #E8E8E8;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.9;
+}
+
+#myDiv {
+  margin: 0 auto;
+  height: 64vh;
+  min-height: 350px;
+}
+
+.titleMunicipio {
+    font-size: 14px;
+    text-align: center;
+    color: #0072ff;
+}
+
+.titleAno {
+   display: inline;
+   font-weight: normal;
+}
+
+.divSteps{
+    margin-top: 45px;
+    margin-left: 3%;
+    margin-right: 3%;
+}

@@ -1,0 +1,6 @@
+Dependencies
+
+    * npm i jsdoc
+    * npm i ink-docstrap
+
+command line: jsdoc -c config.json -t node_modules/ink-docstrap/template/ --readme ../README.md

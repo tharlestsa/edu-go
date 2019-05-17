@@ -1,0 +1,39 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc", "closure"]
+    },
+    "source": {
+        "include": [
+            "../client/lib",
+            "../client/lib/pdf",
+            "../server",
+            "../server/routers",
+            "../server/middleware",
+            "../server/utils"
+        ],
+        "exclude": ["../server/node_modules"],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [],
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true,
+        "outputSourceFiles": true,
+        "outputSourcePath": true,
+        "systemName": "Plataforma de Espacialização de Dados da Educação do Estado de Goiás",
+        "copyright": "Copyright © 2019 Tharles de Sousa Andrade",
+        "navType": "inline",
+        "theme": "cerulean",
+        "dateFormat": "MMMM Do YYYY",
+        "linenums": true,
+        "collapseSymbols": true,
+        "inverseNav": true,
+        "protocol": "html://",
+        "methodHeadingReturns": true
+    },
+    "opts": {
+        "encoding": "utf8"
+    }
+}

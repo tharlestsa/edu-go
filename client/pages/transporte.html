@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Plataforma de Dados Espacializados">
+    <meta name="author" content="Tharles de Sousa Andrade">
+
+    <title>Plataforma de Dados Espacializados - Transporte</title>
+
+
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="../assets/catepstyles/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../assets/morris/morris.css" rel="stylesheet">
+    <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/leaflet/leaflet.css" rel="stylesheet">
+
+    <link href="../assets/noSlider/nouislider.css" rel="stylesheet">
+    <link href="../assets/catepstyles/css/cities-form.css" rel="stylesheet">
+    <link href="../assets/catepstyles/css/margin.css" rel="stylesheet">
+    <link href="../assets/jquery/jquery-ui.css" rel="stylesheet">
+    <link href="../assets/pace/pace-theme-barber-shop.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/easyButton/src/easy-button.css">
+    <link href='../assets/leaflet-fullscreen/leaflet.fullscreen.css' rel='stylesheet' />
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <header class="align-items-start app-header flex-column flex-md-row navbar navbar-expand-md navbar-light">
+            <div class="align-items-baseline d-flex flex-row navbar-brand p-lg-3 pl-3 pr-3 pt-3">
+                <a class="" href="index.html"><img src="/images/logo.png" width="130" height="35"></a>
+            </div>
+        </header>
+
+
+        <div class="d-md-flex">
+            <div class="sidebar" role="navigation">
+                <div class="sidebar-nav collapse navbar-collapse show" id="side-menu-wrapper">
+                    <ul class="nav navbar-nav navbar-collapse flex-column side-nav list-group" id="side-menu">
+                        <li class="list-group-item">
+                            <a href="#">
+                                <i class="fa fa-graduation-cap fa-fw"></i> Informações da Educação <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav-second-level list-group nested">
+                                <li class="list-group-item">
+                                    <a href="financiamento.html"> <i class="fa fa fa-dollar"></i> Financiamento da Educação</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="ideb.html"> <i class="fa fa fa-line-chart fa-fw"></i> IDEB</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="matriculas.html"> <i class="fa fa-check-square-o fa-fw"> </i> Matrículas Educação Infantil</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="transporte.html"> <i class="fa fa fa-bus fa-fw"> </i> Transporte Escolar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">
+                                <i class="fa fa-info fa-fw"></i> Mais Informações <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav-second-level list-group nested">
+                                <li class="list-group-item">
+                                    <a target="_blank" href="http://qedu.org.br/estado/109-goias/aprendizado">Acesso ao QEDU</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="page-wrapper" class="p-4">
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <h5 class="card-header">Filtros</h5>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <label>Busca por Município</label>
+                                            <input type="text" class="form-control" id="municipality" placeholder="Digite o nome do município"></input required>
+                                        </div>
+                                        <div class="col-md-2 mb-2">
+                                            <label>Semestre</label>
+                                            <select id="semestre" class="form-control">
+                            <option value="1">Primeiro</option>
+                            <option value="2">Segundo</option>
+                        </select>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label>&nbsp;</label>
+                                            <button class="form-control btn btn-primary" type="button" id="zoomin" value="Zoom In"> <i class="fa fa-map-marker"></i> Exibir Município Selecionado</button>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label>&nbsp;</label>
+                                            <button class="form-control btn btn-secondary" type="button" id="zoomout" value="Zoom Out"> <i class="fa fa fa-eraser "></i> Limpar Seleção</button>
+                                        </div>
+                                        <div class="col-md-2 mb-2">
+                                            <label>&nbsp;</label>
+                                            <button class="form-control btn btn-info" type="button" id="gerarPdf" value="gerarPdf"> <i class="fa fa-file"></i> Gerar Relatório PDF</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs pull-left" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="mapa-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mapa</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="grafico-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Graficos</a>
+                                    </li>
+                                    <!--                   <li class="nav-item">
+                    <a class="nav-link" id="grafico-tab" data-toggle="modal" data-target="#exampleModal">Ajuda</a>
+                  </li> -->
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="mapa-tab">
+                                        <div id="mapid">
+                                        </div>
+                                        <div class="divSteps">
+                                            <div id="slider-step"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="grafico-tab">
+                                        <div id="myDiv"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="../assets/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../assets/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="../assets/popper/popper.min.js"></script>
+<script type="text/javascript" src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/metisMenu/metisMenu.min.js"></script>
+<script type="text/javascript" src="../assets/catepstyles/js/sb-admin-2.js"></script>
+<script src="../assets/plotly/plotly-latest.min.js"></script>
+<script type="text/javascript" src="../assets/leaflet/leaflet.js"></script>
+<script src="../assets/easyButton/src/easy-button.js"></script>
+<script src="../assets/easyPrint/dist/bundle.js"></script>
+<script type="text/javascript" src="../assets/noSlider/nouislider.js"></script>
+<script type="text/javascript" src="../assets/pace/pace.min.js"></script>
+<script type="text/javascript" src="../assets/leaflet-fullscreen/fullscreen.js"></script>
+<script type="text/javascript" src="../assets/jqueyNumberFormat/jquery.number.min.js"></script>
+<script type="text/javascript" src="../lib/util.js"></script>
+<script src="../assets/plotly/plotly-locale-pt-br.js"></script>
+<script type="text/javascript" src="../assets/jspdf/dist/jspdf.min.js"></script>
+<script type="text/javascript" src="../assets/numeral/numeral.js"></script>
+<script type="text/javascript" src="../assets/jspdf-autotable/dist/jspdf.plugin.autotable.min.js"></script>
+<script type="text/javascript" src="../lib/pdf/logo.js"></script>
+<script type="text/javascript" src="../lib/pdf/geraDocumentoPdfTransporte.js"></script>
+<script type="module" src="../lib/transporte.js"></script>
+
+</html>
